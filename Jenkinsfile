@@ -17,7 +17,7 @@ pipeline {
                 python3 -m venv jenv
 
                 # Activar entorno virtual
-                source jenv/bin/activate
+                . jenv/bin/activate
 
                 # Instalar paquetes en el entorno
                 pip install --upgrade pip
