@@ -13,11 +13,22 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
+                # Crear entorno virtual
+                python3 -m venv jenv
+
+                # Activar entorno virtual
+                source jenv/bin/activate
+
+                # Instalar paquetes en el entorno
+                pip install --upgrade pip
                 pip install pytest numpy pandas scikit-learn
+
+                # Ejecutar pruebas
                 pytest
                 '''
             }
         }
+
         stage('Deploy') {
             steps {
                 echo 'In this step, we deploy our porject'
